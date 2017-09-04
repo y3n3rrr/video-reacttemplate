@@ -1,6 +1,22 @@
 import React, {Component} from 'react'
+import $ from 'jquery'
 
 class Sidebar extends Component{
+    constructor(props){
+        super(props)
+    }
+    componentDidMount(){
+        $( "li a.menu1" ).click(function() {
+            $( "ul.cl-effect-2" ).slideToggle( 300, function() {
+            // Animation complete.
+            });
+            });
+        $( "li a.menu" ).click(function() {
+            $( "ul.cl-effect-1" ).slideToggle( 300, function() {
+            // Animation complete.
+            });
+            });
+    }
     render(){
         return(
             <div className="col-sm-3 col-md-2 sidebar">
@@ -16,7 +32,7 @@ class Sidebar extends Component{
                 <li className="active"><a href="index-2.html" className="home-icon"><span className="glyphicon glyphicon-home" aria-hidden="true" />Home</a></li>
                 <li><a href="shows.html" className="user-icon"><span className="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true" />TV Shows</a></li>
                 <li><a href="history.html" className="sub-icon"><span className="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true" />History</a></li>
-                <li><a href="#" className="menu1"><span className="glyphicon glyphicon-film" aria-hidden="true" />Movies<span className="glyphicon glyphicon-menu-down" aria-hidden="true" /></a></li>
+                <li><a href="#" ref="menu1" className="menu1"><span className="glyphicon glyphicon-film" aria-hidden="true" />Movies<span className="glyphicon glyphicon-menu-down" aria-hidden="true" /></a></li>
                 <ul className="cl-effect-2">
                   <li><a href="movies.html">English</a></li>                                             
                   <li><a href="movies.html">Chinese</a></li>
