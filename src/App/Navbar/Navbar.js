@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-
+import SignUp from '../Register/SignUp'
+import SignIn from '../Register/SignIn'
 class Navbar extends Component{
     componentDidMount(){
     }
@@ -32,52 +33,9 @@ class Navbar extends Component{
                 {/* pop-up-box */}
                 <link href="assets/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
                 {/*//pop-up-box */}
-                <div id="small-dialog2" className="mfp-hide">
-                  <h3>Create Account</h3> 
-                  <div className="social-sits">
-                    <div className="facebook-button">
-                      <a href="#">Connect with Facebook</a>
-                    </div>
-                    <div className="chrome-button">
-                      <a href="#">Connect with Google</a>
-                    </div>
-                    <div className="button-bottom">
-                      <p>Already have an account? <a href="#small-dialog" className="play-icon popup-with-zoom-anim">Login</a></p>
-                    </div>
-                  </div>
-                  <div className="signup">
-                    <form>
-                      <input type="text" className="email" placeholder="Mobile Number" maxLength={10} pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
-                    </form>
-                    <div className="continue-button">
-                      <a href="#small-dialog3" className="hvr-shutter-out-horizontal play-icon popup-with-zoom-anim">CONTINUE</a>
-                    </div>
-                  </div>
-                  <div className="clearfix"> </div>
-                </div>	
-                <div id="small-dialog3" className="mfp-hide">
-                  <h3>Create Account</h3> 
-                  <div className="social-sits">
-                    <div className="facebook-button">
-                      <a href="#">Connect with Facebook</a>
-                    </div>
-                    <div className="chrome-button">
-                      <a href="#">Connect with Google</a>
-                    </div>
-                    <div className="button-bottom">
-                      <p>Already have an account? <a href="#small-dialog" className="play-icon popup-with-zoom-anim">Login</a></p>
-                    </div>
-                  </div>
-                  <div className="signup">
-                    <form>
-                      <input type="text" className="email" placeholder="Email" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email" />
-                      <input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autoComplete="off" />
-                      <input type="text" className="email" placeholder="Mobile Number" maxLength={10} pattern="[1-9]{1}\d{9}" title="Enter a valid mobile number" />
-                      <input type="submit" defaultValue="Sign Up" />
-                    </form>
-                  </div>
-                  <div className="clearfix"> </div>
-                </div>	
+             <SignUp />	
+           
+                	
                 <div id="small-dialog7" className="mfp-hide">
                   <h3>Create Account</h3> 
                   <div className="social-sits">
@@ -151,34 +109,7 @@ class Navbar extends Component{
                   </div>
                 </div>
               </div>
-              <div className="signin">
-                <a href="#small-dialog" className="play-icon popup-with-zoom-anim">Sign In</a>
-                <div id="small-dialog" className="mfp-hide">
-                  <h3>Login</h3>
-                  <div className="social-sits">
-                    <div className="facebook-button">
-                      <a href="#">Connect with Facebook</a>
-                    </div>
-                    <div className="chrome-button">
-                      <a href="#">Connect with Google</a>
-                    </div>
-                    <div className="button-bottom">
-                      <p>New account? <a href="#small-dialog2" className="play-icon popup-with-zoom-anim">Signup</a></p>
-                    </div>
-                  </div>
-                  <div className="signup">
-                    <form>
-                      <input type="text" className="email" placeholder="Enter email / mobile" required="required" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" />
-                      <input type="password" placeholder="Password" required="required" pattern=".{6,}" title="Minimum 6 characters required" autoComplete="off" />
-                      <input type="submit" defaultValue="LOGIN" />
-                    </form>
-                    <div className="forgot">
-                      <a href="#">Forgot password ?</a>
-                    </div>
-                  </div>
-                  <div className="clearfix"> </div>
-                </div>
-              </div>
+              <SignIn />	
               <div className="clearfix"> </div>
             </div>
           </div>

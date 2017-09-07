@@ -15,9 +15,7 @@ class RecentlyUploadedVideos extends Component{
     }
     render(){
         var videosJsx = [];
-        debugger
         videosJsx = this.videos.map((value, index)=>{
-            debugger
             return ( 
                 <Video key={value.Id} videoType={value.videoType} timeSpan={value.timeSpan} videoImageUrl={value.videoImageUrl} videoClass={value.videoClass} clockClass={value.clockClass} timeClass={value.timeClass}
                 description={value.description} owner={value.owner} viewsCount={value.viewsCount} />
