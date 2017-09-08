@@ -33,9 +33,9 @@ class Navbar extends Component{
                 {/* pop-up-box */}
                 <link href="assets/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
                 {/*//pop-up-box */}
-             <SignUp />	
+                
+             <SignUp appState = {this.props.appState} />	
            
-                	
                 <div id="small-dialog7" className="mfp-hide">
                   <h3>Create Account</h3> 
                   <div className="social-sits">

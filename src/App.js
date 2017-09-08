@@ -17,10 +17,13 @@ import './scss/App.scss';
 
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar appState={this.props.appState} />
         <Sidebar />
         <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <Router>
