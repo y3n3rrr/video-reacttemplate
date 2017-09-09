@@ -2,9 +2,12 @@ import React, {Component} from 'react'
 import $ from 'jquery'
 
 class VideoDetail extends Component{
-    constructor(props){
-        super(props)
-    }
+  constructor(props){
+    super(props)
+    
+  }
+   
+   
     componentDidMount(){
         var size_li = $("#myList li").size();
         var x=1;
@@ -30,21 +33,7 @@ class VideoDetail extends Component{
               <iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowFullScreen />
             </div>
           </div>
-          <div className="song-grid-right">
-            <div className="share">
-              <h5>Share this</h5>
-              <ul>
-                <li><a href="#" className="icon fb-icon">Facebook</a></li>
-                <li><a href="#" className="icon dribbble-icon">Dribbble</a></li>
-                <li><a href="#" className="icon twitter-icon">Twitter</a></li>
-                <li><a href="#" className="icon pinterest-icon">Pinterest</a></li>
-                <li><a href="#" className="icon whatsapp-icon">Whatsapp</a></li>
-                <li><a href="#" className="icon like">Like</a></li>
-                <li><a href="#" className="icon comment-icon">Comments</a></li>
-                <li className="view">200 Views</li>
-              </ul>
-            </div>
-          </div>
+          {ShareApps()}
           <div className="clearfix"> </div>
           <div className="published">
             <div className="load_more">	
@@ -69,246 +58,9 @@ class VideoDetail extends Component{
               </ul>
             </div>
           </div>
-          <div className="all-comments">
-            <div className="all-comments-info">
-              <a href="#">All Comments (8,657)</a>
-              <div className="box">
-                <form>
-                  <input type="text" placeholder="Name" required=" " />			           					   
-                  <input type="text" placeholder="Email" required=" " />
-                  <input type="text" placeholder="Phone" required=" " />
-                  <textarea placeholder="Message" required=" " defaultValue={""} />
-                  <input type="submit" defaultValue="SEND" />
-                  <div className="clearfix"> </div>
-                </form>
-              </div>
-              <div className="all-comments-buttons">
-                <ul>
-                  <li><a href="#" className="top">Top Comments</a></li>
-                  <li><a href="#" className="top newest">Newest First</a></li>
-                  <li><a href="#" className="top my-comment">My Comments</a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="media-grids">
-              <div className="media">
-                <h5>Tom Brown</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Mark Johnson</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Steven Smith</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Marry Johne</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Mark Johnson</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Mark Johnson</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-              <div className="media">
-                <h5>Peter Johnson</h5>
-                <div className="media-left">
-                  <a href="#">
-                  </a>
-                </div>
-                <div className="media-body">
-                  <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-                  <span>View all posts by :<a href="#"> Admin </a></span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <Comments {...{totalCommentCount:"12345",bok:"boook!", appState:this.props.appState}}/>
         </div>
-        <div className="col-md-4 single-right">
-          <h3>Up Next</h3>
-          <div className="single-grid-right">
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r1.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r2.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views </p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r3.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r4.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r5.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r6.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author">By <a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r1.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r2.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r3.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r4.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r5.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-            <div className="single-right-grids">
-              <div className="col-md-4 single-right-grid-left">
-                <a href="single.html"><img src="images/r6.jpg" alt /></a>
-              </div>
-              <div className="col-md-8 single-right-grid-right">
-                <a href="single.html" className="title"> Nullam interdum metus</a>
-                <p className="author"><a href="#" className="author">John Maniya</a></p>
-                <p className="views">2,114,200 views</p>
-              </div>
-              <div className="clearfix"> </div>
-            </div>
-          </div>
-        </div>
-        {/*-300x250-*/}
+        <InComingVid {...{Title:"Up Next"}} /> 
         <div className="clearfix"> </div>
       </div>
         )
@@ -316,3 +68,277 @@ class VideoDetail extends Component{
 }
 
 export default VideoDetail
+const InComingVid = (context) => {
+  return (<div className="col-md-4 single-right">
+  <h3>{context.Title}</h3>
+  <div className="single-grid-right">
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r1.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r2.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views </p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r3.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r4.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r5.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r6.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author">By <a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r1.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r2.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r3.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r4.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r5.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+    <div className="single-right-grids">
+      <div className="col-md-4 single-right-grid-left">
+        <a href="single.html"><img src="images/r6.jpg" alt /></a>
+      </div>
+      <div className="col-md-8 single-right-grid-right">
+        <a href="single.html" className="title"> Nullam interdum metus</a>
+        <p className="author"><a href="#" className="author">John Maniya</a></p>
+        <p className="views">2,114,200 views</p>
+      </div>
+      <div className="clearfix"> </div>
+    </div>
+  </div>
+</div>)
+}
+const ShareApps = ()=>(
+<div className="song-grid-right">
+<div className="share">
+  <h5>Share this</h5>
+  <ul>
+    <li><a href="#" className="icon fb-icon">Facebook</a></li>
+    <li><a href="#" className="icon dribbble-icon">Dribbble</a></li>
+    <li><a href="#" className="icon twitter-icon">Twitter</a></li>
+    <li><a href="#" className="icon pinterest-icon">Pinterest</a></li>
+    <li><a href="#" className="icon whatsapp-icon">Whatsapp</a></li>
+    <li><a href="#" className="icon like">Like</a></li>
+    <li><a href="#" className="icon comment-icon">Comments</a></li>
+    <li className="view">200 Views</li>
+  </ul>
+</div>
+</div>)
+class Comments extends Component{
+  constructor(props){
+    super(props)
+    this.appState=this.props.appState
+  }
+  SaveComment=(e)=>{
+    debugger
+    e.preventDefault();
+    this.appState.comment.name = this.name.value;
+    this.appState.comment.email = this.email.value;
+    this.appState.comment.phone = this.phone.value;
+    this.appState.comment.message = this.message.value;
+    this.appState.postSaveComment();
+  }
+  render(){return (
+    <div className="all-comments">
+    <div className="all-comments-info">
+      <a href="#">All Comments ({this.props.totalCommentCount})</a>
+      <div className="box">
+        <form onSubmit={(e)=>{this.SaveComment(e)}}>
+          <input type="text" defaultValue="asd" ref={(input)=>{this.name=input}} placeholder="Name" required=" " />			           					   
+          <input type="text" defaultValue="asd" ref={(input)=>{this.email=input}} placeholder="Email" required=" " />
+          <input type="text" defaultValue="asd" ref={(input)=>{this.phone=input}} placeholder="Phone" required=" " />
+          <textarea placeholder="Message" ref={(input)=>{this.message=input}} required=" " defaultValue="asd" />
+          <input type="submit" defaultValue="SEND" />
+          <div className="clearfix"> </div>
+        </form>
+      </div>
+      <div className="all-comments-buttons">
+        <ul>
+          <li><a href="#" className="top">Top Comments</a></li>
+          <li><a href="#" className="top newest">Newest First</a></li>
+          <li><a href="#" className="top my-comment">My Comments</a></li>
+        </ul>
+      </div>
+    </div>
+    <div className="media-grids">
+      <div className="media">
+        <h5>Tom Brown</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Mark Johnson</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Steven Smith</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Marry Johne</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Mark Johnson</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Mark Johnson</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+      <div className="media">
+        <h5>Peter Johnson</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+          <span>View all posts by :<a href="#"> Admin </a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  )}
+  
+}

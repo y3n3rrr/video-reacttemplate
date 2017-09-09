@@ -3,3 +3,9 @@ export class user{
     password;
     email
 }
+export class comment{
+    name;
+    email;
+    phone;
+    message;
+}
