@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import $ from 'jquery'
+import {observer} from 'mobx-react'
 
 class VideoDetail extends Component{
   constructor(props){
     super(props)
-    
   }
    
-   
+  // SaveComment = (formData) => {
+  //   this.props.appState.postSaveComment(formData);
+  // }
     componentDidMount(){
+  
         var size_li = $("#myList li").size();
         var x=1;
         $('#myList li:lt('+x+')').show();
@@ -58,7 +61,8 @@ class VideoDetail extends Component{
               </ul>
             </div>
           </div>
-        <Comments {...{totalCommentCount:"12345",bok:"boook!", appState:this.props.appState}}/>
+          {/* SaveComment:this.SaveComment */}
+        <Comments {...{totalCommentCount:"12345", appState:this.props.appState,  }}/>
         </div>
         <InComingVid {...{Title:"Up Next"}} /> 
         <div className="clearfix"> </div>
@@ -223,26 +227,37 @@ const ShareApps = ()=>(
   </ul>
 </div>
 </div>)
+
+
+@observer
 class Comments extends Component{
   constructor(props){
     super(props)
     this.appState=this.props.appState
   }
-  SaveComment=(e)=>{
-    debugger
+  onSubmit = (e) => {
     e.preventDefault();
-    this.appState.comment.name = this.name.value;
-    this.appState.comment.email = this.email.value;
-    this.appState.comment.phone = this.phone.value;
-    this.appState.comment.message = this.message.value;
-    this.appState.postSaveComment();
-  }
-  render(){return (
+    const formData = {
+      name: this.name.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      message: this.message.value
+    };
+    //this.props.SaveComment(formData);
+    this.props.appState.postSaveComment(formData);
+   }
+
+   componentDidMount(){
+    this.props.appState.getComments()
+   }
+  render(){
+    let comments=[];
+    return (
     <div className="all-comments">
     <div className="all-comments-info">
       <a href="#">All Comments ({this.props.totalCommentCount})</a>
       <div className="box">
-        <form onSubmit={(e)=>{this.SaveComment(e)}}>
+        <form onSubmit={this.onSubmit}>
           <input type="text" defaultValue="asd" ref={(input)=>{this.name=input}} placeholder="Name" required=" " />			           					   
           <input type="text" defaultValue="asd" ref={(input)=>{this.email=input}} placeholder="Email" required=" " />
           <input type="text" defaultValue="asd" ref={(input)=>{this.phone=input}} placeholder="Phone" required=" " />
@@ -340,5 +355,18 @@ class Comments extends Component{
     </div>
   </div>
   )}
-  
+}
+
+const userComment = (commentContext)=>{
+  <div className="media">
+  <h5>{commentContext.username}</h5>
+  <div className="media-left">
+    <a href="#">
+    </a>
+  </div>
+  <div className="media-body">
+    <p>{commentContext.comment}</p>
+    <span>{commentContext.date}</span>
+  </div>
+</div>
 }

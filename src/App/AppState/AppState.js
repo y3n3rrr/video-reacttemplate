@@ -5,7 +5,6 @@ import {user,comment} from './models/user'
 
 class AppState {
   @observable user=new user;
-  @observable comment=new Object;
   constructor() {
   }
   postSaveUser(){
@@ -18,17 +17,34 @@ class AppState {
         })
       .catch(error => error);
   }
-  postSaveComment(){
+  postSaveComment(comment){
     debugger
-    var newComment=this.comment
-    axios.post('http://localhost:56732/Api/Comment/CreateComment', newComment)
+    axios.post('http://localhost:56732/Api/Comment/CreateComment', comment)
     .then(response =>{debugger
       var result = response.data;
         if(result.Success)
           alert("Kayit basarili!")
       })
-    .catch(error => error);
+    .catch(error => {debugger
+      var response = error.response;
+      if(response.data.Message)
+        alert(response.data.Message)
+    });
   }
+  getComments(){
+    axios.get('http://localhost:56732/Api/Comment/GetComment')
+    .then(response =>{debugger
+      var result = response.data;
+        if(result.Success)
+          alert("Kayit basarili!")
+      })
+    .catch(error => {debugger
+      var response = error.response;
+      if(response.data.Message)
+        alert(response.data.Message)
+    });
+  }
+  
 }
 
 var appState = new AppState
