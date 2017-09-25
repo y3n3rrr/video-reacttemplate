@@ -23,7 +23,7 @@ class VideoContainer extends Component {
                     <div className="clearfix"> </div>
                 </div>
                 <div className="recommended">
-                    <RecentlyUploadedList />
+                    <RecentlyUploadedList appState={this.props.appState} />
                 </div>
                 {/*-728x90-*/}
                 <div className="recommended">

@@ -13,6 +13,9 @@ class RecentlyUploadedVideos extends Component{
                 {Id:5, videoType:2, timeSpan:"4:34", videoImageUrl:"assets/images/c3.jpg", videoClass:"col-md-3 resent-grid recommended-grid slider-first", clockClass:"clck small-clck", timeClass:"time small-time slider-time", description:"Nullam interdum metus a imperdiet pellentesque vitae pulvinar tortor", owner:"John Maniya", viewsCount:"2,114,200 views" },
             ]
     }
+    componentDidMount(){
+        
+    }
     render(){
         var videosJsx = [];
         debugger
