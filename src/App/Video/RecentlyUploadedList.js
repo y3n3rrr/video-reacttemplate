@@ -17,7 +17,7 @@ class RecentlyUploadedVideos extends Component{
         var videosJsx = [];
         videosJsx = this.videos.map((value, index)=>{
             return ( 
-                <Video key={value.Id} videoType={value.videoType} timeSpan={value.timeSpan} videoImageUrl={value.videoImageUrl} videoClass={value.videoClass} clockClass={value.clockClass} timeClass={value.timeClass}
+                <Video videoId={value.Id} key={value.Id} videoType={value.videoType} timeSpan={value.timeSpan} videoImageUrl={value.videoImageUrl} videoClass={value.videoClass} clockClass={value.clockClass} timeClass={value.timeClass}
                 description={value.description} owner={value.owner} viewsCount={value.viewsCount} />
             )
         });

@@ -29,7 +29,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path="/" component={VideoContainer} />
-              <Route path="/watch" render={routeProps => <VideoDetail {...routeProps} appState={this.props.appState} />} />
+              <Route path="/watch/:id" render={routeProps => <VideoDetail {...routeProps} appState={this.props.appState} />} />
             </Switch>
           </Router>
             <Footer />

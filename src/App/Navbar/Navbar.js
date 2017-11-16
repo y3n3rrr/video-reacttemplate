@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import SignUp from '../Register/SignUp'
 import SignIn from '../Register/SignIn'
 class Navbar extends Component{
-    componentDidMount(){
-    }
     render(){
         return(
             <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -15,7 +13,7 @@ class Navbar extends Component{
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand" href="index-2.html"><h1><img src="assets/images/logo.png" alt /></h1></a>
+            <a className="navbar-brand" href="index-2.html"><h1><img src="/assets/images/logo.png" alt="" /></h1></a>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <div className="top-search">
@@ -109,7 +107,7 @@ class Navbar extends Component{
                   </div>
                 </div>
               </div>
-              <SignIn />	
+              <SignIn appState={this.props.appState}/>	
               <div className="clearfix"> </div>
             </div>
           </div>

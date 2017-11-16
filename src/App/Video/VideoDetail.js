@@ -2,16 +2,16 @@ import React, {Component} from 'react'
 import $ from 'jquery'
 import {observer} from 'mobx-react'
 
+import moment from 'moment'
+
+@observer
 class VideoDetail extends Component{
   constructor(props){
     super(props)
+    this.props.appState.setVideoId(this.props.match.params.id)
   }
-   
-  // SaveComment = (formData) => {
-  //   this.props.appState.postSaveComment(formData);
-  // }
     componentDidMount(){
-  
+  this.props.appState.getVideo()
         var size_li = $("#myList li").size();
         var x=1;
         $('#myList li:lt('+x+')').show();
@@ -33,7 +33,8 @@ class VideoDetail extends Component{
               <h3>Etiam molestie nisl eget consequat pharetra</h3>	
             </div>
             <div className="video-grid">
-              <iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowFullScreen />
+              <iframe src={this.props.appState.Video.Url} allowFullScreen />
+              {/* "https://www.youtube.com/embed/oYiT-vLjhC4" */}
             </div>
           </div>
           {ShareApps()}
@@ -42,7 +43,7 @@ class VideoDetail extends Component{
             <div className="load_more">	
               <ul id="myList">
                 <li>
-                  <h4>Published on 15 June 2015</h4>
+                  <h4>{moment(this.props.appState.Video.PublishDate).format('MMMM Do, YYYY')}</h4>
                   <p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
                 </li>
                 <li>
@@ -62,7 +63,7 @@ class VideoDetail extends Component{
             </div>
           </div>
           {/* SaveComment:this.SaveComment */}
-        <Comments {...{totalCommentCount:"12345", appState:this.props.appState,  }}/>
+        <Comments appState={this.props.appState} />
         </div>
         <InComingVid {...{Title:"Up Next"}} /> 
         <div className="clearfix"> </div>
@@ -230,20 +231,38 @@ const ShareApps = ()=>(
 
 
 @observer
+class Errors extends Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    debugger
+    const errors = this.props.appState.errors
+    return(
+      <div className="alert alert-danger published">
+        {errors.map((val, i) =>(
+          <li key={i}><span className="glyphicon glyphicon-warning-sign"></span> {val}</li>
+        ))}
+      </div>
+    )
+  }
+}
+@observer
 class Comments extends Component{
   constructor(props){
     super(props)
-    this.appState=this.props.appState
   }
+
   onSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      name: this.name.value,
-      email: this.email.value,
-      phone: this.phone.value,
-      message: this.message.value
+      VideoId:this.props.appState.Video.Id,
+      Name: this.name.value,
+      Email: this.email.value,
+      Phone: this.phone.value,
+      Message: this.message.value,
+      CommentDate: moment()
     };
-    //this.props.SaveComment(formData);
     this.props.appState.postSaveComment(formData);
    }
 
@@ -251,16 +270,17 @@ class Comments extends Component{
     this.props.appState.getComments()
    }
   render(){
-    let comments=[];
+    const comments=this.props.appState.Video.Comments;
     return (
     <div className="all-comments">
+      { this.props.appState.errors.length>0 ? <Errors appState={this.props.appState} /> : null }
     <div className="all-comments-info">
-      <a href="#">All Comments ({this.props.totalCommentCount})</a>
+      <a href="#">All Comments ({comments.length})</a>
       <div className="box">
         <form onSubmit={this.onSubmit}>
-          <input type="text" defaultValue="asd" ref={(input)=>{this.name=input}} placeholder="Name" required=" " />			           					   
-          <input type="text" defaultValue="asd" ref={(input)=>{this.email=input}} placeholder="Email" required=" " />
-          <input type="text" defaultValue="asd" ref={(input)=>{this.phone=input}} placeholder="Phone" required=" " />
+          <input type="text" defaultValue="Yener" ref={(input)=>{this.name=input}} placeholder="Name" required=" " />			           					   
+          <input type="text" defaultValue="y3n3rrr@gmail.com" ref={(input)=>{this.email=input}} placeholder="Email" required=" " />
+          <input type="text" defaultValue="5469330633" ref={(input)=>{this.phone=input}} placeholder="Phone" required=" " />
           <textarea placeholder="Message" ref={(input)=>{this.message=input}} required=" " defaultValue="asd" />
           <input type="submit" defaultValue="SEND" />
           <div className="clearfix"> </div>
@@ -275,7 +295,24 @@ class Comments extends Component{
       </div>
     </div>
     <div className="media-grids">
-      <div className="media">
+      {comments.map((val, index) => (
+        <div key={index} className="media">
+        <h5>{val.Name}</h5>
+        <div className="media-left">
+          <a href="#">
+          </a>
+        </div>
+        <div className="media-body">
+        <span>{moment(val.CommentDate).format('MMMM Do, YYYY')}</span>
+          <p>{val.Message}</p>
+         
+        </div>
+      </div>
+      ))
+    }
+
+
+      {/* <div className="media">
         <h5>Tom Brown</h5>
         <div className="media-left">
           <a href="#">
@@ -296,62 +333,8 @@ class Comments extends Component{
           <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
           <span>View all posts by :<a href="#"> Admin </a></span>
         </div>
-      </div>
-      <div className="media">
-        <h5>Steven Smith</h5>
-        <div className="media-left">
-          <a href="#">
-          </a>
-        </div>
-        <div className="media-body">
-          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-          <span>View all posts by :<a href="#"> Admin </a></span>
-        </div>
-      </div>
-      <div className="media">
-        <h5>Marry Johne</h5>
-        <div className="media-left">
-          <a href="#">
-          </a>
-        </div>
-        <div className="media-body">
-          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-          <span>View all posts by :<a href="#"> Admin </a></span>
-        </div>
-      </div>
-      <div className="media">
-        <h5>Mark Johnson</h5>
-        <div className="media-left">
-          <a href="#">
-          </a>
-        </div>
-        <div className="media-body">
-          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-          <span>View all posts by :<a href="#"> Admin </a></span>
-        </div>
-      </div>
-      <div className="media">
-        <h5>Mark Johnson</h5>
-        <div className="media-left">
-          <a href="#">
-          </a>
-        </div>
-        <div className="media-body">
-          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-          <span>View all posts by :<a href="#"> Admin </a></span>
-        </div>
-      </div>
-      <div className="media">
-        <h5>Peter Johnson</h5>
-        <div className="media-left">
-          <a href="#">
-          </a>
-        </div>
-        <div className="media-body">
-          <p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-          <span>View all posts by :<a href="#"> Admin </a></span>
-        </div>
-      </div>
+      </div> */}
+
     </div>
   </div>
   )}

@@ -10,7 +10,7 @@ class Video extends Component {
         return (
             <div className={this.props.videoClass}>
                 <div className="resent-grid-img recommended-grid-img">
-                    <Link to="/watch"><img src={this.props.videoImageUrl} alt="ThumbnailUrl" /></Link>
+                    <Link to={"/watch/"+this.props.videoId}><img src={this.props.videoImageUrl} alt="ThumbnailUrl" /></Link>
                     <div className={this.props.timeClass}>
                         <p>{this.props.timeSpan}</p>
                     </div>

@@ -8,7 +8,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-jshint": "^2.0.4",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
@@ -19,13 +18,16 @@
     "jquery": "1.11.1",
     "mobx": "^3.2.2",
     "mobx-react": "^4.2.2",
+    "moment": "^2.19.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "custom-react-scripts": "0.2.0"
+    "custom-react-scripts": "0.2.0",
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
